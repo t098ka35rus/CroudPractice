@@ -2,24 +2,52 @@ package org.example.repository;
 
 import org.example.model.Post;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 // Stub
 public class PostRepository {
-  public List<Post> all() {
-    return Collections.emptyList();
-  }
+    protected List<Post> postList = new ArrayList<>();
+    protected long postCount = 1;
 
-  public Optional<Post> getById(long id) {
-    return Optional.empty();
-  }
+    public List<Post> all() {
+        System.out.println(postList);
+        return postList;
+    }
 
-  public Post save(Post post) {
-    return post;
-  }
+    public Optional<Post> getById(long id) {
+        for (Post post : postList) {
+            if (post.getId() == id) {
+                return Optional.of(post);
+            }
+        }
+        return Optional.empty();
+    }
 
-  public void removeById(long id) {
-  }
+    public synchronized Post save(Post post) {
+        long id = post.getId();
+        if (id == 0) {
+            post.setId(postCount);
+            postList.add(post);
+            postCount++;
+            return post;
+        }
+        for (Post foundedPost : postList) {
+            if (foundedPost.getId() == id) {
+                foundedPost.setContent(post.getContent());
+                return foundedPost;
+            }
+
+        }
+        postList.add(post);
+        postCount++;
+        return post;
+
+    }
+
+    public synchronized void removeById(long id) {
+        postList.removeIf(post -> post.getId() == id);
+
+    }
 }

@@ -14,7 +14,8 @@ public class SimpleServlet extends HttpServlet {
         var path = req.getRequestURI();
         if (path.matches("/simple")) {
             // resp.setContentType("plain/text");
-            resp.getWriter().println("GET processed " + "Timestamp = " + LocalDateTime.now().toString());
+            resp.getWriter().println("GET processed " + "\r\n"
+                    + "Timestamp = " + LocalDateTime.now());
 
         }
     }
