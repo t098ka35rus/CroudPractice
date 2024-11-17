@@ -1,7 +1,6 @@
 package org.example.servlet;
 
 import org.example.controller.PostController;
-import org.example.repository.PostRepository1;
 import org.example.service.PostService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

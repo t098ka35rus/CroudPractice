@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class PostRepository1 implements PostRepository{
+public class PostRepository1 implements PostRepository {
     protected List<Post> postList = new ArrayList<>();
     protected long postCount = 1;
 
