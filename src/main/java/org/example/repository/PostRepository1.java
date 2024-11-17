@@ -1,13 +1,14 @@
 package org.example.repository;
 
 import org.example.model.Post;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-// Stub
-public class PostRepository {
+@Repository
+public class PostRepository1 implements PostRepository{
     protected List<Post> postList = new ArrayList<>();
     protected long postCount = 1;
 
